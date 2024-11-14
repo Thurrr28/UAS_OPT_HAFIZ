@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Diagnosa Penyakit dan Hama Tanaman Bayam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <header class="bg-green-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Sistem Pakar Diagnosa Penyakit dan Hama Tanaman Bayam</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a class="hover:underline" href="index.html">Beranda</a></li>
+                    <li><a class="hover:underline" href="Tentang.html">Tentang</a></li>
+                    <li><a class="hover:underline" href="diagnosa.html">Diagnosa</a></li>
+                    <li><a class="hover:underline" href="penyakit.html">Daftar Penyakit</a></li>
+                    <li><a class="hover:underline" href="hama.html">Daftar Hama</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto p-4">
+        <section class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Diagnosa Penyakit dan Hama</h2>
+            <form class="bg-white p-4 rounded shadow" id="diagnosis-form">
+                <div class="mb-4">
+                    <label class="block text-lg font-bold mb-2" for="symptoms">Pilih Gejala:</label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <input type="checkbox" id="gejala1" name="gejala" value="daun kuning" class="mr-2">
+                            <label for="gejala1">Daun Kuning</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gejala3" name="gejala" value="tanaman layu mendadak" class="mr-2">
+                            <label for="gejala3">Tanaman Layu Mendadak</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gejala4" name="gejala" value="bercak putih di permukaan daun" class="mr-2">
+                            <label for="gejala4">Bercak Putih di Permukaan Daun</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gejala5" name="gejala" value="akar membusuk" class="mr-2">
+                            <label for="gejala5">Akar Membusuk</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gejala6" name="gejala" value="kerusakan pada daun" class="mr-2">
+                            <label for="gejala6">Kerusakan pada Daun</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gejala8" name="gejala" value="daun menjadi keriting" class="mr-2">
+                            <label for="gejala8">Daun Menjadi Keriting</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gejala9" name="gejala" value="daun berwarna kuning" class="mr-2">
+                            <label for="gejala9">Daun Berwarna Kuning</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="bg-green-600 text-white px-4 py-2 rounded" onclick="diagnose()" type="button">Diagnosa</button>
+            </form>
+            <div class="mt-8" id="diagnosis-result"></div>
+        </section>
+    </main>
+    <footer class="bg-green-600 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>© 2024 Sistem Pakar Diagnosa Penyakit dan Hama Tanaman Bayam. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function diagnose() {
+            const checkboxes = document.querySelectorAll('input[name="gejala"]:checked');
+            let symptoms = [];
+            checkboxes.forEach((checkbox) => {
+                symptoms.push(checkbox.value.toLowerCase());
+            });
+            let result = '';
+
+            if (symptoms.includes('daun kuning')) {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Penyakit Virus (seperti Virus Kuning)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Daun menguning dan pertumbuhan terhambat.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Menghilangkan tanaman yang terinfeksi.</li>
+                            <li>Menggunakan varietas yang tahan terhadap virus.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (symptoms.includes('tanaman layu mendadak')) {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Penyakit Layu Bakteri (Ralstonia solanacearum)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Tanaman layu mendadak dan dapat mati.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Menghindari penyiraman berlebihan.</li>
+                            <li>Menggunakan benih yang sehat dan tahan penyakit.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (symptoms.includes('bercak putih di permukaan daun')) {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Penyakit Embun Tepung (Erysiphe spp.)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Muncul bercak putih di permukaan daun.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Menggunakan fungisida yang sesuai.</li>
+                            <li>Meningkatkan sirkulasi udara di antara tanaman dengan penjarangan.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (symptoms.includes('akar membusuk')) {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Penyakit Busuk Akar (Fusarium spp.)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Akar membusuk, tanaman layu.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Menghindari penanaman di lahan yang terinfeksi.</li>
+                            <li>Menggunakan varietas tahan dan memperbaiki drainase tanah.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (symptoms.includes('kerusakan pada daun')) {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Ulat (Spodoptera spp.)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Kerusakan pada daun, terutama lubang-lubang yang besar.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Pengendalian mekanis (mengumpulkan ulat secara manual).</li>
+                            <li>Menggunakan pestisida nabati seperti ekstrak daun mimba.</li>
+                            <li>Memperkenalkan musuh alami seperti parasitoid.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (symptoms.includes('daun menjadi keriting')) {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Kutu Daun (Aphids)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Daun menjadi keriting, pertumbuhan terhambat, dan dapat menyebarkan virus.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Menggunakan insektisida nabati atau pestisida kimia sesuai dosis.</li>
+                            <li>Memperkenalkan predator alami seperti ladybug.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (symptoms.includes('daun berwarna kuning')){
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Penyakit Bercak Daun (Cercospora spp.)</h3>
+                        <p class="mb-2"><strong>Gejala:</strong> Daun berwarna kuning dengan bintik-bintik kecil.</p>
+                        <p class="mb-2"><strong>Penanganan:</strong></p>
+                        <ul class="list-disc list-inside">
+                            <li>Menggunakan fungisida yang sesuai.</li>
+                            <li>Menghilangkan daun yang terinfeksi.</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                result = `
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="text-lg font-bold mb-2">Tidak Diketahui</h3>
+                        <p class="mb-2">Gejala yang Anda masukkan tidak cocok dengan penyakit yang kami ketahui. Silakan konsultasikan dengan ahli pertanian.</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById('diagnosis-result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
